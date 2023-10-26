@@ -8,7 +8,6 @@ const PopularMenu = () => {
     fetch("menu.json")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         const popularItems = data.filter((item) => item.category === "popular");
         setMenu(popularItems);
       });
