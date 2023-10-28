@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   LoadCanvasTemplate,
   loadCaptchaEnginge,
@@ -11,9 +11,16 @@ import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
   const { loginUser } = useContext(AuthContext);
+  const [disabled, setDisabled] = useState(true);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
+
+  console.log(from);
 
   const captchaRef = useRef(null);
-  const [disabled, setDisabled] = useState(true);
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
@@ -29,7 +36,7 @@ const Login = () => {
     loginUser(email, password).then((result) => {
       console.log(result.user);
       Swal.fire({
-        title: "Custom animation with Animate.css",
+        title: "user login usecess",
         showClass: {
           popup: "animate__animated animate__fadeInDown",
         },
@@ -37,6 +44,8 @@ const Login = () => {
           popup: "animate__animated animate__fadeOutUp",
         },
       });
+
+      navigate(from, { replace: true });
     });
   };
 
