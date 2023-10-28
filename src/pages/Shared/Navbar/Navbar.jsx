@@ -29,6 +29,7 @@ const Navbar = () => {
 
       {user ? (
         <>
+          <span>{user.displayName}</span>
           <button onClick={hangleLogout} className="btn btn-ghost">
             Log Out
           </button>
