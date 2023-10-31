@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
+import Dashboard from "../Loayout/Dashboard";
 import Main from "../Loayout/Main";
 import Signup from "../Signup/Signup";
+import MyCart from "../pages/Dashboard/MyCart/MyCart";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
 import Menu from "../pages/Menu/Menu/Menu";
@@ -40,6 +42,16 @@ export const router = createBrowserRouter([
             <Secret></Secret>
           </PrivateRoute>
         ),
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <Dashboard />,
+    children: [
+      {
+        path: "mycart",
+        element: <MyCart />,
       },
     ],
   },

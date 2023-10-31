@@ -5,7 +5,6 @@ import useMenu from "../../../hooks/useMenu";
 const Recommends = () => {
   const [menu] = useMenu();
   const recommends = menu.slice(0, 3);
-  console.log(recommends);
   return (
     <section className="my-20 py-10">
       <SectionTitle
