@@ -4,7 +4,7 @@
 
 .drawer-side a.active {
     color: wheat;
-    background-color: transparent;
+    background-color: red;
 }
 
 .drawer-side a {

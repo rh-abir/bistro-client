@@ -1,11 +1,15 @@
 import { NavLink, Outlet } from "react-router-dom";
 
+import { AiOutlineShopping } from "react-icons/ai";
 import { BiCalendar, BiHomeAlt, BiSolidWallet } from "react-icons/bi";
 import { BsCart4 } from "react-icons/bs";
 import { CgMenuCake } from "react-icons/cg";
 import { HiOutlineMail } from "react-icons/hi";
+import useCart from "../hooks/useCart";
 
 const Dashboard = () => {
+  const [cart] = useCart();
+
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -48,6 +52,9 @@ const Dashboard = () => {
           <li>
             <NavLink to="/dashboard/mycart">
               <BsCart4 /> My Cart
+              <span className="badge badge-secondary">
+                +{cart?.length || 0}
+              </span>
             </NavLink>
           </li>
           <div className="divider"></div>
@@ -63,7 +70,9 @@ const Dashboard = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/order/salad">Order Food</NavLink>
+            <NavLink to="/order/salad">
+              <AiOutlineShopping /> Order Food
+            </NavLink>
           </li>
 
           <li>
